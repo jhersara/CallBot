@@ -1,0 +1,48 @@
+# CallBot - Professional AI Trading Bot
+# Requisitos de Dependencias
+
+# MetaTrader 5 Integration
+MetaTrader5==5.0.45
+
+# GUI Framework
+customtkinter==5.2.0
+tkinter-tools==0.1.0
+
+# Data Processing
+numpy==1.24.0
+pandas==2.0.0
+
+# Technical Analysis
+ta-lib==0.4.28
+
+# API & Web
+requests==2.31.0
+aiohttp==3.9.0
+
+# Data Storage & Serialization
+python-json-logger==2.0.7
+python-dateutil==2.8.2
+
+# Utilities
+python-dotenv==1.0.0
+pytz==2023.3
+
+# Development & Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Logging
+loguru==0.7.0
+
+# Configuration
+pyyaml==6.0
+
+# Performance
+numba==0.57.0
+
+# Async Support
+asyncio==3.4.3
+
+# Notifications (Optional)
+python-telegram-bot==20.0
+smtplib==1.0.0
