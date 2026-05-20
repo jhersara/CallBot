@@ -174,25 +174,17 @@ class StrategyExecutor:
             dict: Resultado de la ejecución
         """
         try:
-            # Aquí se llamaría al MT5Connector para ejecutar la orden
-            # Por ahora, retornamos un resultado simulado
+            # Ejecutar orden en MT5 real
+            order_result = self.mt5_connector.send_order(
+                symbol=self.symbol,
+                action=action,
+                lot_size=lot_size,
+                stop_loss=stop_loss,
+                take_profit=take_profit,
+                comment=f"CallBot_{action}_{datetime.now().isoformat()}"
+            )
             
-            # TODO: Implementar integración real con MT5Connector
-            # order_result = self.mt5_connector.send_order(
-            #     symbol=self.symbol,
-            #     action=action,
-            #     lot_size=lot_size,
-            #     entry_price=entry_price,
-            #     stop_loss=stop_loss,
-            #     take_profit=take_profit
-            # )
-            
-            return {
-                'success': True,
-                'order_id': f"{self.symbol}_{datetime.now().timestamp()}",
-                'action': action,
-                'lot_size': lot_size
-            }
+            return order_result
         
         except Exception as e:
             return {
