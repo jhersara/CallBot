@@ -15,6 +15,11 @@ pandas==2.0.0
 # Technical Analysis
 ta-lib==0.4.28
 
+# Machine Learning & AI (Fase 2)
+scikit-learn==1.3.0
+scipy==1.11.0
+matplotlib==3.8.0
+
 # API & Web
 requests==2.31.0
 aiohttp==3.9.0
@@ -46,3 +51,10 @@ asyncio==3.4.3
 # Notifications (Optional)
 python-telegram-bot==20.0
 smtplib==1.0.0
+
+# Phase 2 Enhancements
+# - FVG Detection
+# - AI Adaptive Learning
+# - Advanced Risk Management
+# - Professional Backtesting
+# - Premium Dashboard

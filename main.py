@@ -13,6 +13,7 @@ from core.market_analyzer import MarketAnalyzer
 from core.enhanced_risk_manager import EnhancedRiskManager
 from core.strategy_executor import StrategyExecutor
 from gui.dashboard import run_dashboard
+from gui.dashboard_premium import run_dashboard_premium
 
 
 class TradingBot:
@@ -118,12 +119,13 @@ class TradingBot:
             print(f"[x] Error durante la inicialización: {str(e)}")
             return False
 
-    def run(self, use_dashboard=True):
+    def run(self, use_dashboard=True, use_premium=True):
         """
         Ejecuta el bot de trading.
         
         Args:
             use_dashboard (bool): Si True, muestra el dashboard (default: True)
+            use_premium (bool): Si True, utiliza el Dashboard Premium (default: True)
         """
         
         if not self.initialize():
@@ -145,9 +147,13 @@ class TradingBot:
         
         # Mostrar dashboard si está habilitado
         if use_dashboard:
-            print("[*] Iniciando dashboard...")
             try:
-                run_dashboard(self.strategy_executor, self.market_analyzer)
+                if use_premium:
+                    print("[*] Iniciando Dashboard PREMIUM...")
+                    run_dashboard_premium(self.strategy_executor, self.market_analyzer)
+                else:
+                    print("[*] Iniciando Dashboard Estándar...")
+                    run_dashboard(self.strategy_executor, self.market_analyzer)
             except Exception as e:
                 print(f"[!] Error en el dashboard: {str(e)}")
                 print("[*] Continuando sin dashboard...")
@@ -288,7 +294,7 @@ def main():
     
     # Ejecutar bot
     try:
-        bot.run(use_dashboard=True)
+        bot.run(use_dashboard=True, use_premium=True)
     except KeyboardInterrupt:
         print("\n[!] Interrupción del usuario")
         bot.stop()

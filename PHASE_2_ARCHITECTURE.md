@@ -48,10 +48,10 @@ Se implementará un algoritmo para detectar ineficiencias en el precio:
 ## 6. Hoja de Ruta de Implementación
 
 1.  **Módulo FVG:** Implementado `core/fvg_detector.py` y integrado en `market_analyzer.py`.
-2.  **Módulo IA:** Implementar `ai/market_classifier.py` y `ai/signal_optimizer.py`.
-3.  **Gestión Pro:** Actualizar `core/trade_manager.py` con Trailing y BE.
-4.  **Dashboard Pro:** Evolucionar `gui/dashboard.py` a una versión premium.
-5.  **Backtesting:** Crear `core/backtester.py` para validación histórica.
+2.  **Módulo IA:** Implementado `ai/market_classifier.py` y `ai/signal_optimizer.py` con integración en `market_analyzer.py`.
+3.  **Gestión Pro:** Implementado `core/advanced_risk_manager.py` con Trailing Stop, Break-even y Multi-activo.
+4.  **Backtesting:** Implementado `core/backtester.py` para validación histórica profesional.
+5.  **Dashboard Pro:** Evolucionar `gui/dashboard.py` a una versión premium.
 
 ---
 **Autor:** Manus AI - Trading Systems Architect

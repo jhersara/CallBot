@@ -9,6 +9,8 @@ from core.fibonacci import Fibonacci
 from core.order_blocks import OrderBlockDetector
 from core.liquidity import LiquidityDetector
 from core.fvg_detector import FVGDetector
+from ai.market_classifier import MarketClassifier
+from ai.signal_optimizer import SignalOptimizer
 
 
 class MarketAnalyzer:
@@ -33,6 +35,8 @@ class MarketAnalyzer:
         self.liquidity_detector = LiquidityDetector(candles)
         self.order_block_detector = OrderBlockDetector(candles)
         self.fvg_detector = FVGDetector(candles)
+        self.market_classifier = MarketClassifier(candles)
+        self.signal_optimizer = SignalOptimizer()
         
         # Calcular niveles de Fibonacci basados en el rango de las últimas 50 velas
         if len(candles) >= 50:
@@ -141,7 +145,7 @@ class MarketAnalyzer:
         
         return {'support': support, 'resistance': resistance}
 
-    def generate_trading_signal(self):
+    def generate_trading_signal(self, use_ai=True):
         """
         Genera una señal de trading consolidada basada en múltiples indicadores.
         
@@ -286,6 +290,14 @@ class MarketAnalyzer:
             'buy_signals': buy_signals,
             'sell_signals': sell_signals
         }
+        
+        # Aplicar IA Adaptativa si está habilitada
+        if use_ai:
+            regime_info = self.market_classifier.get_market_regime()
+            signal = self.signal_optimizer.optimize_signal(signal, regime_info['regime'])
+            signal['market_regime'] = regime_info
+            
+        return signal
 
     def get_market_sentiment(self):
         """
